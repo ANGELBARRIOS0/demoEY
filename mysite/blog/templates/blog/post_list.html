@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+<!-- el block content-->
+{% block content %}
+
+    {% for post in posts %}
+    <div class="post">
+        <div class="date">
+            <p>published: {{ post.published_date }}</p>
+        </div>
+        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+        <!--|linebreaksbr está pasando el texto de los post a través de un filtro para convertir saltos de línea en párrafos.-->
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+    {% endfor %}
+
+{% endblock %}
